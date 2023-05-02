@@ -1,0 +1,59 @@
+server:
+  port: 7900
+eureka:
+  client: #将客户端注册到 eureka 服务列表内
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka  #这个地址是 7001注册中心在 application.yml 中暴露出来额注册地址 （单机版）
+  instance:
+    prefer-ip-address: true  #显示访问路径的 ip 地址 
+spring:
+  application:
+    name: user
+  mail:
+    host: smtp.qq.com
+    username: 3337453544@qq.com
+    password: jgilbfwffottdajf
+    protocol: smtp
+    default-encoding: UTF-8
+  data:
+   mongodb:
+     uri: mongodb://localhost:27017/newsdbmongo
+  redis:
+   host: 127.0.0.1
+   port: 6379
+   password: 
+   jedis:
+     pool:
+      max-active: 8
+      max-wait: -1ms
+      max-idle: 500
+      min-idle: 0
+   lettuce:
+     shutdown-timeout: 0ms
+  servlet:
+    multipart:
+      max-file-size:
+        10MB
+      max-request-size:
+        20MB
+  mvc: 
+    static-path-pattern: /pic/**
+#  web:
+#    resources:
+#      static-locations: file:${web.uploadPath}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/newsweb?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone =Asia/Shanghai
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+mybatis-plus:
+  configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
